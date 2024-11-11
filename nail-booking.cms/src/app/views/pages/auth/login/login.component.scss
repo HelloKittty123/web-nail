@@ -1,0 +1,17 @@
+.login-banner {
+  animation: upDown 6s infinite  alternate;
+}
+.login-background{
+  // background: var(--login-logo-ground);
+  // background: linear-gradient(90deg, rgba(69,159,252,1) 2%, rgba(128,202,247,1) 47%, rgba(141,220,253,1) 71%, rgba(107,230,255,1) 100%);
+
+  // background: rgb(132,193,255);
+  // background: radial-gradient(circle, rgba(132,193,255,1) 11%, rgba(174,224,255,1) 49%, rgba(140,236,255,1) 100%);
+
+  // background: rgb(127,190,255);
+  // background: radial-gradient(circle, rgba(127,190,255,1) 11%, rgba(174,224,255,1) 49%, rgba(120,233,255,1) 100%);
+
+  background: rgb(164,209,255);
+  background: radial-gradient(circle, rgba(164,209,255,1) 11%, rgba(174,224,255,1) 49%, rgba(111,186,255,1) 100%);
+}
+

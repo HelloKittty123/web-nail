@@ -1,0 +1,29 @@
+<div>
+  <div class="grid">
+    <div class="col-12">
+      <label for="name" class="block text-900 font-medium mb-3">Name <span class="text-red-400">*</span></label>
+      <input id="name" type="text" pInputText [(ngModel)]="service.name" class="w-full" placeholder="Service name" />
+    </div>
+    <div class="col-12">
+      <label for="name" class="block text-900 font-medium mb-3">Group <span class="text-red-400">*</span></label>
+      <p-dropdown [options]="groups" optionLabel="name" optionValue="id" [(ngModel)]="service.categoryId"
+        [showClear]="true" placeholder="Select group" />
+    </div>
+    <div class="col-6">
+      <label for="name" class="block text-900 font-medium mb-3">Price <span class="text-red-400">*</span></label>
+      <input id="name" type="number" pInputText [(ngModel)]="service.price" class="w-full" />
+    </div>
+    <div class="col-6">
+      <label for="name" class="block text-900 font-medium mb-3">Duration <span class="text-red-400">*</span></label>
+      <input id="name" type="number" pInputText [(ngModel)]="service.duration" class="w-full" />
+    </div>
+  </div>
+
+  <ng-container>
+    <div class="flex justify-content-end gap-2 px-2 pt-3">
+      <p-button icon="pi pi-times" label="Close" severity="secondary" (onClick)="close()" />
+      <p-button icon="pi pi-trash" label="Delete" severity="danger" *ngIf="isUpdate" (onClick)="delete()" />
+      <p-button icon="pi pi-check" loadingIcon="pi pi-cog" [label]="this.isUpdate? 'Update':'Create'" (onClick)="CreateOrUpdate()" />
+    </div>
+  </ng-container>
+</div>

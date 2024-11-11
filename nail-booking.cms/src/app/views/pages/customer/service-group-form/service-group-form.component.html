@@ -1,0 +1,22 @@
+<div>
+  <div class="grid">
+    <div class="col-12">
+      <label for="taxCode" class="block text-900 font-medium mb-3">Name <span class="text-red-400">*</span></label>
+      <input id="taxCode" type="text" pInputText class="w-full" [(ngModel)]="group.name" />
+    </div>
+    <div class="col-12">
+      <label for="password" class="block text-900 font-medium mb-3">Description <span
+          class="text-red-400">*</span></label>
+      <input id="password" type="text" pInputText class="w-full" [(ngModel)]="group.description" />
+    </div>
+  </div>
+
+  <ng-container>
+    <div class="flex justify-content-end gap-2 px-2 pt-3">
+      <p-button icon="pi pi-times" label="Close" severity="secondary" (onClick)="close()" />
+      <p-button icon="pi pi-trash" label="Delete" severity="danger" (onClick)="delete()" *ngIf="!isCreate"/>
+      <p-button icon="pi pi-check" loadingIcon="pi pi-cog" [loading]="isLoading"
+        [label]="this.isCreate?'Create':'Update'" (onClick)="createOrUpdate()" />
+    </div>
+  </ng-container>
+</div>

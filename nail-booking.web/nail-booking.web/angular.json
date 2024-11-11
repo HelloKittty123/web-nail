@@ -1,0 +1,132 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "nail-booking.web": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/nail-booking.web",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "node_modules/angular-calendar/css/angular-calendar.css",
+              "src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "10mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "10mb",
+                  "maximumError": "10mb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "nail-booking.web:build:production"
+            },
+            "development": {
+              "browserTarget": "nail-booking.web:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "nail-booking.web:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "node_modules/angular-calendar/css/angular-calendar.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
+              "node_modules/magnific-popup/dist/magnific-popup.css",
+              "node_modules/flexslider/flexslider.css",
+              "node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css",
+              "src/styles.css"
+            ],
+            "scripts": [
+              "src/jquery/dist/jquery.min.js",
+              "src/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/js/modernizr.custom.js",
+              "src/assets/js/jquery.easing.js",
+              "src/assets/js/jquery.appear.js",
+              "src/assets/js/jquery.scrollto.js",
+              "src/assets/js/menu.js",
+              "src/assets/js/materialize.js",
+              "src/assets/js/datetimepicker.js",
+              "src/assets/js/jquery.vide.min.js",
+              "src/assets/js/imagesloaded.pkgd.min.js",
+              "src/assets/js/isotope.pkgd.min.js",
+              "src/assets/js/jquery.flexslider.js",
+              "src/assets/js/owl.carousel.min.js",
+              "src/assets/js/jquery.magnific-popup.min.js",
+              "src/assets/js/booking-form.js",
+              "src/assets/js/contact-form.js",
+              "src/assets/js/jquery.validate.min.js",
+              "src/assets/js/jquery.ajaxchimp.min.js",
+              "src/assets/js/wow.js",
+              "src/assets/js/custom.js",
+              "src/assets/js/changer.js",
+              "src/assets/js/styleswitch.js"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "864c93b5-598c-4ca2-ae9d-1f3e94c6afc6"
+  }
+}

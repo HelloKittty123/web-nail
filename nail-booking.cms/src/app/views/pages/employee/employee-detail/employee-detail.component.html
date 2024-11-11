@@ -1,0 +1,44 @@
+<div>
+  <div class="grid">
+    <div class="col-4" style="max-height: 30vh; overflow-y: auto;">
+      <img [src]="avatar" alt="Image" width="250" (click)="fileAvatar.click()" />
+
+      <input style="display: none;" #fileAvatar (change)="UploadAvatar($event.target)" type="file" class="form-control">
+      <br />
+    </div>
+    <div class="col-8 grid">
+      <div class="col-12">
+        <label for="name" class="block text-900 font-medium mb-3">Name <span class="text-red-400">*</span></label>
+        <input id="name" type="text" pInputText [(ngModel)]="employee.name" class="w-full" placeholder="Staff's name" />
+      </div>
+      <div class="col-6">
+        <label for="username" class="block text-900 font-medium mb-3">UserName <span
+            class="text-red-400">*</span></label>
+        <input id="username" type="text" pInputText [(ngModel)]="employee.userName" class="w-full"
+          placeholder="Staff's username" />
+      </div>
+      <div class="col-6">
+        <label for="password" class="block text-900 font-medium mb-3">Password <span
+            class="text-red-400">*</span></label>
+        <input id="password" type="password" pInputText [(ngModel)]="employee.password" class="w-full"
+          placeholder="Staff's password" />
+      </div>
+      <div class="col-12">
+        <label for="position" class="block text-900 font-medium mb-3">Position <span
+            class="text-red-400">*</span></label>
+        <input id="position" type="text" pInputText [(ngModel)]="employee.position" class="w-full"
+          placeholder="Staff's name" />
+      </div>
+    </div>
+
+  </div>
+
+  <ng-container>
+    <div class="flex justify-content-end gap-2 px-2 pt-3">
+      <p-button icon="pi pi-times" label="Close" severity="secondary" (onClick)="close()" />
+      <p-button icon="pi pi-trash" label="Delete" severity="danger" *ngIf="isUpdate && this.employee !== 'admin'" (onClick)="delete()" />
+      <p-button icon="pi pi-check" loadingIcon="pi pi-cog" [label]="this.isUpdate? 'Update employee':'Create employee'"
+        (onClick)="Save()" />
+    </div>
+  </ng-container>
+</div>

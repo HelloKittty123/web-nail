@@ -1,0 +1,142 @@
+<div class="grid">
+  <div class="col-4">
+    <p-button (click)="addToast()" [raised]="true" class="text-white font-prime m-1" >
+      Send a dynamic toast
+    </p-button>
+  </div>
+  <div class="col-4">
+    <p-button (click)="openModal()" [raised]="true" class="text-white font-prime m-1">
+      Open Modal
+    </p-button>
+  </div>
+  <div class="col-4">
+    <p-button (click)="openConfirm()" [raised]="true" class="text-white font-prime m-1">
+      Open Confirm
+    </p-button>
+  </div>
+
+
+</div>
+
+
+<div class="grid">
+  <h1 class="col-offset-4 col-6 grid">Test Component</h1>
+  <div class="col-offset-3 col-6 grid">
+    <div class="col-offset-1 col-5">
+      <label for="">Ng Zorro</label>
+      <nz-divider></nz-divider>
+      <button nz-button nzType="primary" nzLoading>
+        <span nz-icon nzType="poweroff"></span>
+        Loading
+      </button>
+      <nz-divider></nz-divider>
+      <input nz-input placeholder="Basic usage" />
+      <nz-divider></nz-divider>
+      <nz-select nzAllowClear nzPlaceHolder="Choose" class="w-full" nzShowSearch>
+        <nz-option-group nzLabel="Manager">
+          <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
+          <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
+        </nz-option-group>
+        <nz-option-group nzLabel="Engineer">
+          <nz-option nzValue="tom" nzLabel="Tom"></nz-option>
+        </nz-option-group>
+      </nz-select>
+      <nz-divider></nz-divider>
+      <nz-date-picker [(ngModel)]="date" (ngModelChange)="null"></nz-date-picker>
+      <nz-divider></nz-divider>
+      <div class="clearfix">
+        <nz-upload
+          nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+          nzListType="picture-card"
+          [(nzFileList)]="fileList"
+          [nzShowButton]="fileList.length < 8"
+          [nzPreview]="handlePreview"
+        >
+          <div>
+            <span nz-icon nzType="plus"></span>
+            <div style="margin-top: 8px">Upload</div>
+          </div>
+        </nz-upload>
+        <nz-modal
+          [nzVisible]="previewVisible"
+          [nzContent]="modalContent"
+          [nzFooter]="null"
+          (nzOnCancel)="previewVisible = false"
+        >
+          <ng-template #modalContent>
+            <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+          </ng-template>
+        </nz-modal>
+      </div>
+      <nz-divider></nz-divider>
+      <nz-color-picker></nz-color-picker>
+      <nz-divider></nz-divider>
+      <div>
+        <nz-slider [nzMin]="1" [nzMax]="20" [(ngModel)]="nzSlider"></nz-slider>
+      </div>
+    </div>
+    <div class="col-offset-1 col-5">
+      <label for="">Prime Ng</label>
+      <nz-divider></nz-divider>
+      <div class="card flex justify-content-center flex-wrap gap-3">
+        <p-toast />
+        <p-splitButton
+            label="Primary"
+            [model]="primeItems"
+            (onClick)="null"
+            rounded
+            class="text-white font-prime"/>
+    </div>
+      <nz-divider></nz-divider>
+      <input type="text" pInputText class="w-full"/>
+      <nz-divider></nz-divider>
+      <div class="w-full card flex justify-content-center">
+        <p-dropdown
+            [options]="cities"
+            [(ngModel)]="primeSelected"
+            optionLabel="name"
+            placeholder="Select a City" />
+      </div>
+      <nz-divider></nz-divider>
+      <div class="flex-auto">
+        <p-calendar
+            [(ngModel)]="date1"
+            [showIcon]="true"
+            inputId="buttondisplay"
+            [showOnFocus]="false"
+            class="text-white font-prime"/>
+      </div>
+      <nz-divider></nz-divider>
+      <div class="card flex justify-content-center">
+        <p-toast />
+        <p-fileUpload
+            name="demo[]"
+            url="https://www.primefaces.org/cdn/api/upload.php"
+            (onUpload)="null"
+            [multiple]="true"
+            accept="image/*"
+            maxFileSize="1000000">
+                <ng-template pTemplate="content">
+                    <!-- <ul *ngIf="uploadedFiles.length">
+                        <li *ngFor="let file of uploadedFiles">
+                            {{ file.name }} - {{ file.size }} bytes
+                        </li>
+                    </ul> -->
+                </ng-template>
+        </p-fileUpload>
+      </div>
+      <nz-divider></nz-divider>
+      <div class="card flex justify-content-center">
+        <p-colorPicker [(ngModel)]="primeColor" />
+      </div>
+      <nz-divider></nz-divider>
+      <div class="card flex justify-content-center">
+        <div>
+            <input type="text" pInputText [(ngModel)]="primeSlider" class="w-full mb-3"/>
+            <p-slider [(ngModel)]="primeSlider" class="w-full" />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

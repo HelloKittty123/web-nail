@@ -1,0 +1,12 @@
+<!-- <div [innerHTML]="content">
+
+</div> -->
+
+<p-confirmDialog>
+    <ng-template pTemplate="message" let-message let-icon let-type let-iconColor>
+        <div class="flex flex-column align-items-center justify-content-center w-full surface-border">
+            <i class="{{icon}} text-6xl text-{{iconColor}}-500"></i>
+            <p class="text-lg">{{ message.message }}</p>
+        </div>
+    </ng-template>
+</p-confirmDialog>

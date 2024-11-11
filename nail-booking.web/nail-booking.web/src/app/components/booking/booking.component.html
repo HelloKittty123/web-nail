@@ -1,0 +1,603 @@
+<!-- Booking -->
+<div *ngIf="step == 0">
+    <section id="hero-1" class="hero-section division">
+        <div class="slider">
+            <ul class="slides">
+                <li id="slide-1">
+
+                    <img [src]="gallery.panel.url" alt="slide-background">
+
+                    <div class="caption d-flex align-items-center center-align">
+                        <div class="container">
+                            <div class="row justify-content-md-center">
+                                <div class="col col-md-10 col-lg-9">
+                                    <div class="caption-txt white--color">
+                                        <h2>Welcome To <span>Pokeme Studio</span></h2>
+                                        <a (click)="Move(1)" class="btn btn-md rose--btn tra-white--hover">
+                                            CLICK TO BOOKING NOW
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+    </section>
+</div>
+
+<!-- Select service -->
+<div *ngIf="step == 1" @fadeInOut>
+    <section id="pricing-page" class="bg-fixed page-hero-section division">
+        <div class="container">
+            <!-- PAGE HERO TEXT -->
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-xl-8">
+                    <div class="hero-txt text-center white--color">
+                        <h2 class="h2-xl">Select Services</h2>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- BREADCRUMB -->
+            <div id="breadcrumb">
+                <div class="row d-flex align-items-center">
+                    <div class="col">
+                        <div class="breadcrumb-nav">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item" (click)="Move(0)"><a href="javascript:;">Booking</a>
+                                    </li>
+                                    <li class="breadcrumb-item" (click)="Move(1)">Services</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="division">
+        <div class="row" style="padding: 40px;">
+            <div class="col-sm-6" style="margin-top: 15px;" *ngFor="let category of categories">
+                <div class="form-item row">
+                    <div class="hover row" (click)="ExpandCategory(category)">
+                        <div class="col-8">
+                            <span class="title">{{ category.name }}</span>
+                            <div class="description">
+                                <span>{{ category.description }}</span>
+                            </div>
+
+                        </div>
+
+                        <div class="col-3" style="display: flex; align-items: center;">
+                            <span class="badge" *ngIf="category.totalAmount > 0">{{ category.totalAmount }}
+                                selected</span>
+                        </div>
+
+                        <div class="col-1" style="display: flex; align-items: center;">
+                            <img *ngIf="category.isExpand" src="../../../assets/icons/icon-down.svg" />
+
+
+                            <img *ngIf="!category.isExpand" src="../../../assets/icons/icon-up.svg" />
+                        </div>
+                    </div>
+
+
+                    <!-- Dịch vụ con -->
+
+                    <div class="col-sm-12" *ngIf="category.isExpand" @fadeInOut>
+
+                        <!-- Dịch vụ con -->
+                        <div class="chil-item row hover" *ngFor="let item of category.items"
+                            (click)="SelectService(item)">
+                            <div class="col-1 checkbox">
+
+                                <input type="checkbox" id="{{item.id}}" [(ngModel)]="item.isSelected"
+                                    class="round-checkbox">
+                                <label for="{{item.id}}"></label>
+                            </div>
+
+                            <div class="col-8">
+                                <span>{{item.name}}</span>
+                            </div>
+
+                            <div class="col-2">
+                                <strong class="price">£{{item.price}}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="division row summary" style="padding-left: 40px;padding-right: 40px;">
+        <div class="col-sm-6">
+            <a (click)="Move(0)" style="width: 100%; margin-top: 20px;" class="btn btn-md btn-block rose--btn">
+                BACK TO HOME
+            </a>
+        </div>
+        <div class="col-sm-6">
+            <a (click)="Move(2)" style="width: 100%; margin-top: 20px;" class="btn btn-md btn-block rose--btn">
+                CLICK TO SELECT STAFF
+            </a>
+        </div>
+
+    </section>
+</div>
+
+
+<!-- Select staff -->
+<div *ngIf="step == 2" @fadeInOut>
+    <section id="pricing-page" class="bg-fixed page-hero-section division">
+        <div class="container">
+            <!-- PAGE HERO TEXT -->
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-xl-8">
+                    <div class="hero-txt text-center white--color">
+                        <h2 class="h2-xl">Select Staff</h2>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- BREADCRUMB -->
+            <div id="breadcrumb">
+                <div class="row d-flex align-items-center">
+                    <div class="col">
+                        <div class="breadcrumb-nav">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item" (click)="Move(0)"><a href="javascript:;">Booking</a>
+                                    </li>
+                                    <li class="breadcrumb-item" (click)="Move(1)"><a href="javascript:;">Services</a>
+                                    </li>
+                                    <li class="breadcrumb-item" (click)="Move(2)">Staff</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="team-1" class="wide-50 team-section division">
+        <div class="container-fluid">
+
+            <div class="team-members-wrapper text-center row">
+                <div class="col-2" *ngFor="let staff of staffs" (click)="SelectStaff(staff)">
+                    <div class="team-member" [class.isSelectStaff]="staff.isSelected">
+
+                        <!-- Team Member Photo -->
+                        <div class="team-member-photo">
+                            <div class="hover-overlay">
+                                <!-- Photo -->
+                                <img class="img-fluid" [src]="staff.avatar" alt="team-member-foto">
+
+                            </div>
+                        </div>
+
+                        <!-- Team Member Data -->
+                        <div class="team-member-data">
+                            <span class="txt-upcase">{{ staff.position}}</span>
+                            <h5 class="h5-lg" style="font-size: 20px !important;">{{ staff.name }}</h5>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="division row summary" style="padding-left: 40px;padding-right: 40px;">
+
+        <div class="col-sm-6">
+            <a (click)="Move(1)" style="width: 100%; margin-top: 20px;" class="btn btn-md btn-block rose--btn">
+                BACK TO SERVICE
+            </a>
+        </div>
+
+        <div class="col-sm-6">
+            <a (click)="Move(3)" style="width: 100%; margin-top: 20px;" class="btn btn-md btn-block rose--btn">
+                SELECT TO SET SCHEDULE
+            </a>
+        </div>
+
+    </section>
+</div>
+
+<!-- Select calendar -->
+<div *ngIf="step == 3" @fadeInOut>
+    <section id="pricing-page" class="bg-fixed page-hero-section division">
+        <div class="container">
+            <!-- PAGE HERO TEXT -->
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-xl-8">
+                    <div class="hero-txt text-center white--color">
+                        <h2 class="h2-xl">Select your arrival time</h2>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- BREADCRUMB -->
+            <div id="breadcrumb">
+                <div class="row d-flex align-items-center">
+                    <div class="col">
+                        <div class="breadcrumb-nav">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item" (click)="Move(0)"><a href="javascript:;">Booking</a>
+                                    </li>
+                                    <li class="breadcrumb-item" (click)="Move(1)"><a href="javascript:;">Services</a>
+                                    </li>
+                                    <li class="breadcrumb-item" (click)="Move(2)"><a href="javascript:;">Staff</a></li>
+
+                                    <li class="breadcrumb-item" (click)="Move(3)">Schedule</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="team-1" class="wide-50 team-section division" style="padding-top: 20px !important;">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="booking-1-wrapper bg--alice-blue" style="background-color: #dddddd !important;">
+                        <div class="form-holder">
+
+                            <!-- Section ID -->
+                            <span class="section-id" style="color: black !important;">Customer info</span>
+
+                            <!-- Booking Form -->
+                            <div name="bookinkform" class="row booking-form">
+
+                                <!-- Form Input -->
+                                <div class="col-md-12">
+                                    <!-- <input type="datetime-local" class="form-control"
+                                     required> -->
+                                    <owl-date-time-inline [(ngModel)]="calendar.start"
+                                        (ngModelChange)="GetCalendar($event)"></owl-date-time-inline>
+                                </div>
+
+                                <!-- Form Input -->
+                                <div class="col-md-12 mt-10" style="margin-top: 25px;">
+                                    <input type="text" name="customerName" class="form-control firstname"
+                                        placeholder="Enter your full name" [(ngModel)]="calendar.customerName">
+                                </div>
+
+                                <!-- Form Input -->
+                                <div class="col-md-12">
+                                    <input type="text" name="customerPhone" class="form-control lastname"
+                                        placeholder="Enter your phone number" [(ngModel)]="calendar.customerPhone">
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="text" name="lastname" class="form-control lastname"
+                                        placeholder="Enter your email" [(ngModel)]="calendar.customerEmail">
+                                </div>
+
+                                <!-- Form Button -->
+                                <div class="col-md-12 mt-10 text-end">
+                                    <button type="submit" style="width: 100%;" (click)="Save()"
+                                        class="btn rose--btn btn-block tra-black--hover submit">Book
+                                        Now</button>
+                                </div>
+                                <div class="col-md-12 mt-10 text-end">
+                                    <button type="submit" style="width: 100%;"
+                                        class="btn rose--btn btn-block tra-black--hover submit"
+                                        (click)="Move(0)">Home</button>
+                                </div>
+
+                            </div> <!-- End Booking Form -->
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div style="width: 100%; text-align: center;">
+                        <span style="color: black;
+                        font-weight: bold;
+                        font-size: 25px;">Staff work schedule</span>
+                    </div>
+                    <div style="width: 100%;max-height: 120vh; overflow-y: auto;">
+                        <mwl-calendar-week-view [viewDate]="viewDate" [events]="events" [dayStartHour]="9"
+                            [dayStartMinute]="0" [dayEndHour]="21" [dayEndMinute]="0" [refresh]="refresh"
+                            (eventTimesChanged)="eventTimesChanged($event)">
+                        </mwl-calendar-week-view>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+</div>
+
+<!-- Complete -->
+<div *ngIf="step == 4" @fadeInOut>
+    <section id="pricing-page" class="bg-fixed page-hero-section division">
+        <div class="container">
+            <!-- PAGE HERO TEXT -->
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-xl-8">
+                    <div class="hero-txt text-center white--color">
+                        <h2 class="h2-xl">Select Staff</h2>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- BREADCRUMB -->
+            <div id="breadcrumb">
+                <div class="row d-flex align-items-center">
+                    <div class="col">
+                        <div class="breadcrumb-nav">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item" (click)="Move(0)"><a href="javascript:;">Booking</a>
+                                    </li>
+                                    <li class="breadcrumb-item" (click)="Move(1)"><a href="javascript:;">Services</a>
+                                    </li>
+                                    <li class="breadcrumb-item" (click)="Move(2)">Staff</li>
+                                    <li class="breadcrumb-item" (click)="Move(0)">Complete</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="team-1" class="wide-50 team-section division">
+        <div class="container">
+
+
+            <div class="team-members-wrapper text-center">
+                <div class="row">
+                    <div class="col-4">
+
+                    </div>
+
+                    <div class="col-4">
+                        <img src="../../../assets/images/complete.png" style="width: 100%;" />
+                    </div>
+
+                    <div class="col-4">
+
+                    </div>
+
+                </div>
+
+                <div class="row text-center">
+                    <span style="font-size: 2rem;">You have successfully booked an appointment.</span>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <section class="division row summary">
+        <div class="col-sm-5" style="padding-left: 40px;">
+        </div>
+        <div class="col-sm-2" style="padding-right: 20px;">
+            <a (click)="Move(0)" style="width: 100%; margin-top: 20px;" class="btn btn-md btn-block rose--btn">
+                HOME
+            </a>
+        </div>
+
+        <div class="col-sm-5" style="padding-left: 40px;">
+        </div>
+
+    </section>
+</div>
+
+<!-- <div class="title-gallery text-center" *ngIf="step == 0">
+
+</div> -->
+
+
+
+<section id="gallery-4" class="gallery-section division" *ngIf="step == 0">
+    <h2 class="section-title text-center">Gallery</h2>
+    <!-- GALLERY-4 IMAGES -->
+    <div class="container-fluid" style="padding-left: 0; padding-right: 0;">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4">
+            <!-- IMAGES ROW -->
+            <div class="col">
+                <!-- IMAGE #1 -->
+                <div class="gallery-image">
+                    <a class="image-link" [href]="gallery.first.url">
+                        <div class="hover-overlay">
+                            <img class="img-fluid image" [src]="gallery.first.url" alt="gallery-image">
+                            <div class="item-overlay"></div>
+                            <div class="image-description white--color">
+                                <div class="image-caption">
+                                    <p class="txt-upcase">{{gallery.first.subTitle}}</p>
+                                    <h5 class="h5-lg">{{gallery.first.title}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="gallery-image m-t-20">
+                    <a class="image-link" [href]="gallery.eighth.url">
+                        <div class="hover-overlay">
+                            <img class="img-fluid image" [src]="gallery.eighth.url" alt="gallery-image">
+                            <div class="item-overlay"></div>
+                            <div class="image-description white--color">
+                                <div class="image-caption">
+                                    <p class="txt-upcase">{{gallery.eighth.subTitle}}</p>
+                                    <h5 class="h5-lg">{{gallery.eighth.title}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div> <!-- END IMAGES ROW -->
+            <!-- IMAGES ROW -->
+            <div class="col">
+                <div class="gallery-image">
+                    <a class="image-link" [href]="gallery.second.url">
+                        <div class="hover-overlay">
+                            <img class="img-fluid image" [src]="gallery.second.url" alt="gallery-image">
+                            <div class="item-overlay"></div>
+                            <div class="image-description white--color">
+                                <div class="image-caption">
+                                    <p class="txt-upcase">{{gallery.second.subTitle}}</p>
+                                    <h5 class="h5-lg">{{gallery.second.title}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="gallery-image m-t-20">
+                    <a class="image-link" [href]="gallery.third.url">
+                        <div class="hover-overlay">
+                            <img class="img-fluid image" [src]="gallery.third.url" alt="gallery-image">
+                            <div class="item-overlay"></div>
+                            <div class="image-description white--color">
+                                <div class="image-caption">
+                                    <p class="txt-upcase">{{gallery.third.subTitle}}</p>
+                                    <h5 class="h5-lg">{{gallery.third.title}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col">
+                <div class="gallery-image">
+                    <a class="image-link" [href]="gallery.fourth.url">
+                        <div class="hover-overlay">
+                            <img class="img-fluid image" [src]="gallery.fourth.url" alt="gallery-image">
+                            <div class="item-overlay"></div>
+                            <div class="image-description white--color">
+                                <div class="image-caption">
+                                    <p class="txt-upcase">{{gallery.fourth.subTitle}}</p>
+                                    <h5 class="h5-lg">{{gallery.fourth.title}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="gallery-image m-t-20">
+                    <a class="image-link" [href]="gallery.fifth.url">
+                        <div class="hover-overlay">
+                            <img class="img-fluid image" [src]="gallery.fifth.url" alt="gallery-image">
+                            <div class="item-overlay"></div>
+                            <div class="image-description white--color">
+                                <div class="image-caption">
+                                    <p class="txt-upcase">{{gallery.fifth.subTitle}}</p>
+                                    <h5 class="h5-lg">{{gallery.fifth.title}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col">
+                <div class="gallery-image">
+                    <a class="image-link" [href]="gallery.sixth.url">
+                        <div class="hover-overlay">
+                            <img class="img-fluid image" [src]="gallery.sixth.url" alt="gallery-image">
+                            <div class="item-overlay"></div>
+                            <div class="image-description white--color">
+                                <div class="image-caption">
+                                    <p class="txt-upcase">{{gallery.sixth.subTitle}}</p>
+                                    <h5 class="h5-lg">{{gallery.sixth.title}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="gallery-image m-t-20">
+                    <a class="image-link" [href]="gallery.seventh.url">
+                        <div class="hover-overlay">
+                            <img class="img-fluid image" [src]="gallery.seventh.url" alt="gallery-image">
+                            <div class="item-overlay"></div>
+                            <div class="image-description white--color">
+                                <div class="image-caption">
+                                    <p class="txt-upcase">{{gallery.seventh.subTitle}}</p>
+                                    <h5 class="h5-lg">{{gallery.seventh.title}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div> <!-- END GALLERY-4 IMAGES -->
+</section> <!-- END GALLERY-4 -->
+
+<style>
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem; /* Kích thước chữ lớn hơn */
+    font-weight: 600; /* Độ đậm của chữ */
+    margin-top: 10px; /* Giảm khoảng cách dưới tiêu đề */
+
+    margin-bottom: 10px; /* Giảm khoảng cách dưới tiêu đề */
+    text-transform: uppercase; /* Viết hoa tất cả các chữ cái */
+    color: #fff; /* Màu chữ trắng */
+    letter-spacing: 2px; /* Khoảng cách giữa các chữ cái */
+    padding: 30px 30px; /* Padding xung quanh tiêu đề */
+    background-color: rgba(0, 0, 0, 0.7); /* Nền tối với độ trong suốt */
+    border-radius: 10px; /* Bo góc */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Đổ bóng nhẹ */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển tiếp mượt mà */
+}
+
+.section-title:hover {
+    transform: scale(1.05); /* Phóng to khi hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* Đổ bóng sâu hơn khi hover */
+}
+
+/* Thêm padding cho gallery image */
+.gallery-image {
+    padding: 0 15px; /* Thêm padding bên trái và bên phải */
+
+}
+
+/* Để căn giữa các cột */
+.row {
+    justify-content: center; /* Căn giữa các cột */
+}
+
+/* Đảm bảo ảnh có kích thước đồng nhất */
+.img-fluid {
+    width: 100%; /* Chiều rộng 100% */
+    height: auto; /* Chiều cao tự động */
+    border-radius: 10px; /* Bo góc cho ảnh */
+    transition: transform 0.3s ease; /* Hiệu ứng chuyển tiếp cho hover */
+}
+
+.gallery-image:hover .img-fluid {
+    transform: scale(1.05); /* Phóng to hình ảnh khi hover */
+}
+
+</style>

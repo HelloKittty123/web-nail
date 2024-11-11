@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+/* Bootstrap */
+@import 'assets/css/bootstrap.min.css';
+
+/* Font Icons */
+@import 'assets/css/flaticon.css';
+
+/* Plugins Stylesheet */
+@import 'assets/css/menu.css';
+@import 'assets/css/dropdown-effects/fade-down.css';
+@import 'assets/css/magnific-popup.css';
+@import 'assets/css/flexslider.css';
+@import 'assets/css/owl.carousel.min.css';
+@import 'assets/css/owl.theme.default.min.css';
+@import 'assets/css/datetimepicker.min.css';
+
+/* Template CSS */
+@import 'assets/css/style.css';
+
+/* On Scroll Animation */
+@import 'assets/css/animate.css';
+
+/* Responsive CSS */
+@import 'assets/css/responsive.css';
+
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+
+@import "@danielmoncada/angular-datetime-picker/assets/style/picker.min.css";
+@import '../node_modules/ngx-toastr/toastr.css';
+
+:root owl-date-time-container {
+  width: 100% !important;
+  box-shadow: none !important;
+  font-family: 'Roboto';
+  font-weight: bold;
+}
+
+:root owl-date-time-calendar {
+  height: 400px !important;
+}
+
+:root owl-date-time-inline {
+  width: 100% !important;
+}
+
+:root .cal-event-title {
+  font-weight: bold;
+  /* font-size: 16px; */
+  font-family: 'Lora';
+}
+
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ed00cd;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ed00cd;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+:root .cal-week-view {
+  padding: 20px !important;
+}
+
+:root a {
+  text-decoration: none;
+}
+
+
+
+

@@ -1,0 +1,280 @@
+.form-item {
+    background-color: white;
+    border: 1px solid #fd1c79;
+    padding: 16px;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+span {
+    user-select: none;
+}
+
+.form-item .icon-box {
+    width: 100%;
+    height: 100%;
+}
+
+.form-item .icon {
+    display: inline-block;
+    color: #fd1c79;
+}
+
+.form-item .icon i {
+    zoom: 2;
+}
+
+.form-item .title {
+    font-size: 27px;
+    font-weight: bold;
+    color: #2d3748;
+    display: inline-block;
+    vertical-align: middle;
+    font-family: 'Lora';
+}
+
+.form-item .description {
+    font-size: 14px;
+    color: #718096;
+    margin-top: 4px;
+}
+
+.form-item .type,
+.form-item .validations {
+    font-size: 12px;
+    color: #a0aec0;
+    margin-top: 8px;
+}
+
+.expand-icon {
+    float: right;
+}
+
+.chil-item {
+    margin-top: 12px;
+    background-color: white;
+    border-top: 1px dashed #fd1c79;
+    padding: 16px 16px 16px 5px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-top: 25px;
+}
+
+.price {
+    font-size: 25px;
+}
+
+.checkbox {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #fd1c79;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Hidden the default checkbox */
+.round-checkbox {
+    display: none;
+}
+
+/* Style the label to create the circle checkbox */
+.round-checkbox+label {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 2px solid #fd4994;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Style the checkmark (circle) */
+.round-checkbox:checked+label::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background-color: #fd1c79;
+    border-radius: 50%;
+}
+
+.hover:hover {
+    cursor: pointer;
+}
+
+.summary {
+    margin-bottom: 20px;
+    bottom: 0;
+    height: 90px;
+    padding-right: 42px;
+}
+
+.form-item {
+    background-color: white;
+    border: 1px solid #fd1c79;
+    padding: 16px;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+span {
+    user-select: none;
+}
+
+.form-item .icon-box {
+    width: 100%;
+    height: 100%;
+}
+
+.form-item .icon {
+    display: inline-block;
+    color: #fd1c79;
+}
+
+.form-item .icon i {
+    zoom: 2;
+}
+
+.form-item .title {
+    font-size: 27px;
+    font-weight: bold;
+    color: #2d3748;
+    display: inline-block;
+    vertical-align: middle;
+    font-family: 'Lora';
+}
+
+.form-item .description {
+    font-size: 14px;
+    color: #718096;
+    margin-top: 4px;
+}
+
+.form-item .type,
+.form-item .validations {
+    font-size: 12px;
+    color: #a0aec0;
+    margin-top: 8px;
+}
+
+.expand-icon {
+    float: right;
+}
+
+.chil-item {
+    margin-top: 12px;
+    background-color: white;
+    border-top: 1px dashed #fd1c79;
+    padding: 16px 16px 16px 5px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-top: 25px;
+}
+
+.price {
+    font-size: 25px;
+}
+
+.checkbox {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #fd1c79;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Hidden the default checkbox */
+.round-checkbox {
+    display: none;
+}
+
+/* Style the label to create the circle checkbox */
+.round-checkbox+label {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 2px solid #fd4994;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Style the checkmark (circle) */
+.round-checkbox:checked+label::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background-color: #fd1c79;
+    border-radius: 50%;
+}
+
+.hover:hover {
+    cursor: pointer;
+}
+
+.summary {
+    margin-bottom: 20px;
+    bottom: 0;
+    height: 90px;
+    padding-right: 42px;
+}
+
+.isSelectStaff {
+    border: 5px solid #fd1c79;
+}
+
+.title-gallery {
+    height: 10rem;
+    padding-top: 4rem;
+}
+
+.title-gallery span {
+    font-size: 2rem;
+}
+
+.gallery-image img {
+    width: 100%;
+    /* height: 500px; */
+}
+
+.m-t-20 {
+    margin-top: 20px;
+}
+
+.image {
+    width: 100%;
+    /* height: 500px !important; */
+}
+
+.h-500 {
+    height: 125px !important;
+}

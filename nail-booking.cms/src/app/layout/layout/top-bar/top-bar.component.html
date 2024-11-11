@@ -1,0 +1,14 @@
+<div class="layout-topbar flex justify-content-between">
+  <a class="layout-topbar-logo" routerLink="">
+    <img src="../../../../assets/images/logo_nail.png" height="10px" alt="logo">  
+  </a>
+  <p-divider layout="vertical"></p-divider>
+  <div>
+    <app-menu-bar></app-menu-bar>
+  </div>
+
+  <div #topbarmenu class="layout-topbar-menu">
+    <p-button class="p-link layout-topbar-button" icon="pi pi-user" [rounded]="true" [outlined]="true" severity="secondary" (onClick)="userMenu.toggle($event)"/>
+    <p-menu #userMenu [model]="userMenus" [popup]="true" />
+  </div>
+</div>

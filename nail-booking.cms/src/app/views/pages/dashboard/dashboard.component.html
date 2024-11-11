@@ -1,0 +1,138 @@
+<div class="surface-ground px-4 py-5 md:px-6 lg:px-8">
+  <div class="grid col-12">
+    <div class="col-3">
+      <h3>{{ viewDate | calendarDate:('dayViewTitle') }}</h3>
+    </div>
+    <div class="col-2">
+      <p-dropdown class="w-100" [options]="selectType" [(ngModel)]="tempView" optionLabel="name" optionValue="value"
+        placeholder="Select time type" />
+    </div>
+    <div class="col-2">
+      <p-dropdown class="w-100" [showClear]="true" [options]="staffs" optionLabel="name" optionValue="id"
+        placeholder="Select staff" [(ngModel)]="filter.staffId" />
+    </div>
+    <div class="col-2 text-right">
+      <p-calendar class="w-100" [(ngModel)]="tempViewDate" />
+    </div>
+    <div class="col-3">
+      <p-button class="ml-2" label="View schedule" (onClick)="GetData()" />
+      <p-button class="ml-2" severity="warning" label="Add on leave" (onClick)="AddOnLeave()" />
+    </div>
+  </div>
+  <br />
+
+
+  <div [ngSwitch]="view">
+    <mwl-calendar-month-view *ngSwitchCase="'month'" [viewDate]="viewDate" [events]="events" [activeDayIsOpen]="true"
+      (eventClicked)="ShowDetail($event)">
+    </mwl-calendar-month-view>
+
+    <!-- [dayStartHour]="9"
+      [dayStartMinute]="0" [dayEndHour]="20" [dayEndMinute]="0"  -->
+    <mwl-calendar-week-view *ngSwitchCase="'week'" [viewDate]="viewDate" [events]="events"
+      (eventClicked)="ShowDetail($event)">
+    </mwl-calendar-week-view>
+
+    <mwl-calendar-day-view *ngSwitchCase="'day'" [viewDate]="viewDate" [events]="events" (eventClicked)="ShowDetail($event)">
+    </mwl-calendar-day-view>
+  </div>
+
+  <p-dialog header="Detail booking" [modal]="true" [(visible)]="showDetail" [style]="{ width: '60rem' }">
+    <div class="grid">
+      <div class="col-12">
+        <label for="customerName" class="block text-900 font-medium mb-3">Customer Name </label>
+        <input [(ngModel)]="selectedCalendar.customerName" id="customerName" readonly type="text" pInputText
+          class="w-full" />
+      </div>
+      <div class="col-6">
+        <label for="customerPhone" class="block text-900 font-medium mb-3">Customer Phone </label>
+        <input [(ngModel)]="selectedCalendar.customerPhone" class="w-100" readonly type="text" pInputText />
+      </div>
+      <div class="col-6">
+        <label for="customerPhone" class="block text-900 font-medium mb-3">Customer Email </label>
+        <input [(ngModel)]="selectedCalendar.customerEmail" readonly id="customerPhone" class="w-100" type="text"
+          pInputText />
+      </div>
+
+      <div class="col-6">
+        <label for="customerPhone" class="block text-900 font-medium mb-3">Start </label>
+        <input [(ngModel)]="selectedCalendar.start" readonly id="customerPhone" class="w-100" type="text" pInputText />
+      </div>
+
+      <div class="col-6">
+        <label for="customerPhone" class="block text-900 font-medium mb-3">End </label>
+        <input [(ngModel)]="selectedCalendar.end" readonly id="customerPhone" class="w-100" type="text" pInputText />
+      </div>
+
+      <div class="col-12">
+        <label for="customerPhone" class="block text-900 font-medium mb-3">Staff </label>
+        <input [(ngModel)]="selectedCalendar.staffName" readonly id="customerPhone" class="w-100" type="text"
+          pInputText />
+      </div>
+
+      <div class="col-12">
+        <label for="customerPhone" class="block text-900 font-medium mb-3">Services</label>
+        <p-table [value]="selectedCalendar.serviceNames" class="w-100">
+
+          <ng-template pTemplate="body" let-service>
+            <tr>
+              <td>{{ service }}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+
+      <div class="col-6">
+        <span>Status &nbsp;</span>
+        <p-tag severity="success" value="Accepted" *ngIf="selectedCalendar.status == 1" />
+        <p-tag severity="secondary" value="Pending" *ngIf="selectedCalendar.status == 0" />
+        <p-tag severity="warning" value="Rejected" *ngIf="selectedCalendar.status == 2" />
+      </div>
+
+      <div class="col-6 text-right">
+        <p-button label="Close" class="m-l-5" severity="secondary" (onClick)="this.showDetail = false;" />
+        <p-button label="Delete" class="m-l-5" severity="danger" (onClick)="confirm($event)" />
+        <p-button label="Accept" class="m-l-5" severity="success" (onClick)="UpdateStatus(1)" />
+        <p-button label="Reject" class="m-l-5" severity="warning" (onClick)="UpdateStatus(2)" />
+
+      </div>
+
+
+
+    </div>
+  </p-dialog>
+
+  <p-dialog header="Add employee on leave" [modal]="true" [(visible)]="ShowStaffOnLeave" [style]="{ width: '40rem' }">
+    <div class="grid">
+      <div class="col-12">
+        <label for="customerName" class="block text-900 font-medium mb-3">Staff </label>
+        <p-dropdown class="w-100" [options]="staffs" optionLabel="name" optionValue="id" placeholder="Select staff"
+          [(ngModel)]="staffOnLeave.staffId" appendTo="body" />
+      </div>
+
+      <div class="col-6">
+        <label for="customerName" class="block text-900 font-medium mb-3">From </label>
+        <p-calendar class="w-full" [(ngModel)]="staffOnLeave.fromDate" appendTo="body" [showTime]="true" />
+      </div>
+
+      <div class="col-6">
+        <label for="customerName" class="block text-900 font-medium mb-3">To </label>
+        <p-calendar class="w-full" [(ngModel)]="staffOnLeave.toDate" appendTo="body" [showTime]="true" />
+      </div>
+
+      <div class="col-12">
+        <p>When creating an staff's leave schedule, the system will generate a full-day work schedule with the title
+          indicating the staff's leave</p>
+      </div>
+
+      <div class="col-12 text-right">
+        <p-button label="Close" class="m-l-5" severity="secondary" (onClick)="this.ShowStaffOnLeave = false;" />
+        <p-button label="Add staff on leave" class="m-l-5" severity="primary" (onClick)="CreateStaffOnLeave()" />
+
+      </div>
+
+
+
+    </div>
+  </p-dialog>
+</div>

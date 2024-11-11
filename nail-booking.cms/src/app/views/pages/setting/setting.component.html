@@ -1,0 +1,238 @@
+<div class="grid" style="padding: 20px;">
+  <div class="col-12">
+    <p-button severity="info" label="Save gallery" icon="pi pi-save" class="mr-2" (onClick)="Save()" />
+  </div>
+  <div class="col-12">
+
+    <div class="">
+      <p-card>
+        <ng-template pTemplate="header">
+          <img alt="Card" [src]="gallery.panel.url" (click)="panel.click()" />
+          <input style="display: none;" #panel (change)="UploadAvatar($event.target,gallery.panel)" type="file"
+            class="form-control">
+        </ng-template>
+        <div class="grid">
+          <div class="col-12">
+            <label for="taxCode" class="block text-900 font-medium mb-3">Title <span
+                class="text-red-400">*</span></label>
+            <input id="taxCode" type="text" pInputText class="w-full" [(ngModel)]="gallery.first.title"
+              placeholder="Title" />
+          </div>
+          <div class="col-12">
+            <label for="password" class="block text-900 font-medium mb-3">Sub Title <span
+                class="text-red-400">*</span></label>
+            <input id="password" type="text" pInputText class="w-full" [(ngModel)]="gallery.first.subTitle"
+              placeholder="Sub title" />
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+  <div class="col-3">
+    <div class="">
+      <p-card>
+        <ng-template pTemplate="header">
+          <img alt="Card" [src]="gallery.first.url" (click)="first.click()" />
+          <input style="display: none;" #first (change)="UploadAvatar($event.target,gallery.first)" type="file"
+            class="form-control">
+        </ng-template>
+        <div class="grid">
+          <div class="col-12">
+            <label for="taxCode" class="block text-900 font-medium mb-3">Title <span
+                class="text-red-400">*</span></label>
+            <input id="taxCode" type="text" pInputText class="w-full" [(ngModel)]="gallery.first.title"
+              placeholder="Title" />
+          </div>
+          <div class="col-12">
+            <label for="password" class="block text-900 font-medium mb-3">Sub Title <span
+                class="text-red-400">*</span></label>
+            <input id="password" type="text" pInputText class="w-full" [(ngModel)]="gallery.first.subTitle"
+              placeholder="Sub title" />
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+  <div class="col-3">
+    <div class="">
+      <p-card>
+        <ng-template pTemplate="header">
+          <img alt="Card" [src]="gallery.eighth.url" (click)="eighth.click()" />
+          <input style="display: none;" #eighth (change)="UploadAvatar($event.target,gallery.eighth)" type="file"
+            class="form-control">
+        </ng-template>
+        <div class="grid">
+          <div class="col-12">
+            <label for="taxCode" class="block text-900 font-medium mb-3">Title <span
+                class="text-red-400">*</span></label>
+            <input id="taxCode" type="text" pInputText class="w-full" [(ngModel)]="gallery.eighth.title"
+              placeholder="Title" />
+          </div>
+          <div class="col-12">
+            <label for="password" class="block text-900 font-medium mb-3">Sub Title <span
+                class="text-red-400">*</span></label>
+            <input id="password" type="text" pInputText class="w-full" [(ngModel)]="gallery.eighth.subTitle"
+              placeholder="Sub title" />
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+
+
+  <div class="col-3">
+    <div class="">
+      <p-card>
+        <ng-template pTemplate="header">
+          <img alt="Card" [src]="gallery.second.url" (click)="second.click()" />
+          <input style="display: none;" #second (change)="UploadAvatar($event.target,gallery.second)" type="file"
+            class="form-control">
+        </ng-template>
+        <div class="grid">
+          <div class="col-12">
+            <label for="taxCode" class="block text-900 font-medium mb-3">Title <span
+                class="text-red-400">*</span></label>
+            <input id="taxCode" type="text" pInputText class="w-full" [(ngModel)]="gallery.second.title"
+              placeholder="Title" />
+          </div>
+          <div class="col-12">
+            <label for="password" class="block text-900 font-medium mb-3">Sub Title <span
+                class="text-red-400">*</span></label>
+            <input id="password" type="text" pInputText class="w-full" [(ngModel)]="gallery.second.subTitle"
+              placeholder="Sub title" />
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+
+  <div class="col-3">
+    <div class="">
+      <p-card>
+        <ng-template pTemplate="header">
+          <img alt="Card" [src]="gallery.third.url" (click)="third.click()" />
+          <input style="display: none;" #third (change)="UploadAvatar($event.target,gallery.third)" type="file"
+            class="form-control">
+        </ng-template>
+        <div class="grid">
+          <div class="col-12">
+            <label for="taxCode" class="block text-900 font-medium mb-3">Title <span
+                class="text-red-400">*</span></label>
+            <input id="taxCode" type="text" pInputText class="w-full" [(ngModel)]="gallery.third.title"
+              placeholder="Title" />
+          </div>
+          <div class="col-12">
+            <label for="password" class="block text-900 font-medium mb-3">Sub Title <span
+                class="text-red-400">*</span></label>
+            <input id="password" type="text" pInputText class="w-full" [(ngModel)]="gallery.third.subTitle"
+              placeholder="Sub title" />
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+
+  <div class="col-3">
+    <div class="">
+      <p-card>
+        <ng-template pTemplate="header">
+          <img alt="Card" [src]="gallery.fourth.url" (click)="fourth.click()" />
+          <input style="display: none;" #fourth (change)="UploadAvatar($event.target,gallery.fourth)" type="file"
+            class="form-control">
+        </ng-template>
+        <div class="grid">
+          <div class="col-12">
+            <label for="taxCode" class="block text-900 font-medium mb-3">Title <span
+                class="text-red-400">*</span></label>
+            <input id="taxCode" type="text" pInputText class="w-full" [(ngModel)]="gallery.fourth.title"
+              placeholder="Title" />
+          </div>
+          <div class="col-12">
+            <label for="password" class="block text-900 font-medium mb-3">Sub Title <span
+                class="text-red-400">*</span></label>
+            <input id="password" type="text" pInputText class="w-full" [(ngModel)]="gallery.fourth.subTitle"
+              placeholder="Sub title" />
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+
+  <div class="col-3">
+    <div class="">
+      <p-card>
+        <ng-template pTemplate="header">
+          <img alt="Card" [src]="gallery.fifth.url" (click)="fifth.click()" />
+          <input style="display: none;" #fifth (change)="UploadAvatar($event.target,gallery.fifth)" type="file"
+            class="form-control">
+        </ng-template>
+        <div class="grid">
+          <div class="col-12">
+            <label for="taxCode" class="block text-900 font-medium mb-3">Title <span
+                class="text-red-400">*</span></label>
+            <input id="taxCode" type="text" pInputText class="w-full" [(ngModel)]="gallery.fifth.title"
+              placeholder="Title" />
+          </div>
+          <div class="col-12">
+            <label for="password" class="block text-900 font-medium mb-3">Sub Title <span
+                class="text-red-400">*</span></label>
+            <input id="password" type="text" pInputText class="w-full" [(ngModel)]="gallery.fifth.subTitle"
+              placeholder="Sub title" />
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+
+  <div class="col-3">
+    <div class="">
+      <p-card>
+        <ng-template pTemplate="header">
+          <img alt="Card" [src]="gallery.sixth.url" (click)="sixth.click()" />
+          <input style="display: none;" #sixth (change)="UploadAvatar($event.target,gallery.sixth)" type="file"
+            class="form-control">
+        </ng-template>
+        <div class="grid">
+          <div class="col-12">
+            <label for="taxCode" class="block text-900 font-medium mb-3">Title <span
+                class="text-red-400">*</span></label>
+            <input id="taxCode" type="text" pInputText class="w-full" [(ngModel)]="gallery.sixth.title"
+              placeholder="Title" />
+          </div>
+          <div class="col-12">
+            <label for="password" class="block text-900 font-medium mb-3">Sub Title <span
+                class="text-red-400">*</span></label>
+            <input id="password" type="text" pInputText class="w-full" [(ngModel)]="gallery.sixth.subTitle"
+              placeholder="Sub title" />
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+
+  <div class="col-3">
+    <div class="">
+      <p-card>
+        <ng-template pTemplate="header">
+          <img alt="Card" [src]="gallery.seventh.url" (click)="seventh.click()" />
+          <input style="display: none;" #seventh (change)="UploadAvatar($event.target,gallery.seventh)" type="file"
+            class="form-control">
+        </ng-template>
+        <div class="grid">
+          <div class="col-12">
+            <label for="taxCode" class="block text-900 font-medium mb-3">Title <span
+                class="text-red-400">*</span></label>
+            <input id="taxCode" type="text" pInputText class="w-full" [(ngModel)]="gallery.seventh.title"
+              placeholder="Title" />
+          </div>
+          <div class="col-12">
+            <label for="password" class="block text-900 font-medium mb-3">Sub Title <span
+                class="text-red-400">*</span></label>
+            <input id="password" type="text" pInputText class="w-full" [(ngModel)]="gallery.seventh.subTitle"
+              placeholder="Sub title" />
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+</div>

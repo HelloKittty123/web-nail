@@ -1,0 +1,87 @@
+.layout-topbar {
+  position: fixed;
+  height: 5rem;
+  z-index: 997;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding: 0 2rem;
+  background-color: var(--surface-card);
+  transition: left .2s;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 3px 5px #00000005,0 0 2px #0000000d,0 1px 4px #00000014
+}
+.layout-topbar .layout-topbar-logo {
+  display: flex;
+  align-items: center;
+  color: var(--surface-900);
+  font-size: 1.5rem;
+  font-weight: 500;
+  border-radius: 12px
+}
+
+.layout-topbar .layout-topbar-logo img {
+  height: 2.5rem;
+  margin-right: .5rem
+}
+
+.layout-topbar .layout-topbar-logo:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  transition: box-shadow .2s;
+  box-shadow: var(--focus-ring)
+}
+
+.layout-topbar .layout-topbar-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: var(--text-color-secondary);
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  transition: background-color .2s
+}
+
+.layout-topbar .layout-topbar-button:hover {
+  color: var(--text-color);
+  background-color: var(--surface-hover)
+}
+
+.layout-topbar .layout-topbar-button:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  transition: box-shadow .2s;
+  box-shadow: var(--focus-ring)
+}
+
+.layout-topbar .layout-topbar-button i {
+  font-size: 1.5rem
+}
+
+.layout-topbar .layout-topbar-button span {
+  font-size: 1rem;
+  display: none
+}
+
+.layout-topbar .layout-topbar-menu-button {
+  display: none
+}
+
+.layout-topbar .layout-topbar-menu-button i {
+  font-size: 1.25rem
+}
+
+.layout-topbar .layout-topbar-menu {
+  margin: 0 0 0 auto;
+  padding: 0;
+  list-style: none;
+  display: flex
+}
+
+.layout-topbar .layout-topbar-menu .layout-topbar-button {
+  margin-left: 1rem
+}
