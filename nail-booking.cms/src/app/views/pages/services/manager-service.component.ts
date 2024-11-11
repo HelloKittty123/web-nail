@@ -1,32 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { ConfirmationService, MessageService, SharedModule } from 'primeng/api';
-import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { JWT_OPTIONS, JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { NgClass, NgIf } from '@angular/common';
-import { NgModel } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import window from 'global';
+import { SharedModule } from 'primeng/api';
+import { UiModal } from '../../../models/interface/uiInterface';
 import { PrimengModule } from '../../../primeng.module';
-import { UiToastService } from '../../../services/shared/ui-toast.service';
 import { UiConfirmService } from '../../../services/shared/ui-confirm.service';
 import { UiModalService } from '../../../services/shared/ui-modal.service';
+import { UiToastService } from '../../../services/shared/ui-toast.service';
 import { AppService } from '../../../services/tax/tax-account.service';
-import { UiConfirm, UiModal } from '../../../models/interface/uiInterface';
-import { ServiceGroupFormComponent } from './service-group-form/service-group-form.component';
 import { ManagerServiceFormComponent } from './manager-service-form/manager-service-form.component';
+import { ServiceGroupFormComponent } from './service-group-form/service-group-form.component';
 
 @Component({
   selector: 'app-manager-service',
   standalone: true,
-  imports: [
-    PrimengModule,
-    NgClass,
-    NgIf,
-    SharedModule
-  ],
+  imports: [PrimengModule, NgClass, NgIf, SharedModule],
   templateUrl: './manager-service.component.html',
-  styleUrl: './manager-service.component.scss'
+  styleUrl: './manager-service.component.scss',
 })
 export class ManagerServiceComponent implements OnInit {
-
   private jwtHelper = new JwtHelperService();
 
   isGroupLoading: boolean = false;
@@ -40,8 +33,8 @@ export class ManagerServiceComponent implements OnInit {
   filterService: any = {
     categoryId: null,
     page: 1,
-    pageSize: 10
-  }
+    pageSize: 10,
+  };
 
   totalRecord: number = 0;
 
@@ -51,24 +44,21 @@ export class ManagerServiceComponent implements OnInit {
     private toastService: UiToastService,
     private confirmationService: UiConfirmService,
     private modalService: UiModalService,
-    private appService: AppService,
-  ) { }
+    private appService: AppService
+  ) {}
 
   ngOnInit() {
     this.GetAllGroup();
     this.GetService();
   }
 
-  init() {
-
-  }
+  init() {}
 
   GetAllGroup() {
     this.isGroupLoading = true;
     this.appService.getAllCategoryGroup().subscribe((res: any) => {
       this.groups = res as any[];
       this.isGroupLoading = false;
-
     });
   }
 
@@ -85,19 +75,22 @@ export class ManagerServiceComponent implements OnInit {
   }
 
   GetService() {
-    this.appService.GetSerivicePaging(this.filterService).subscribe((response: any) => {
-      this.totalRecord = response.totalCount;
-      this.services = response.items;
-    })
+    this.appService
+      .GetSerivicePaging(this.filterService)
+      .subscribe((response: any) => {
+        this.totalRecord = response.totalCount;
+        this.services = response.items;
+      });
   }
 
   OpenCategoryGroup(accountData?: any) {
     console.log(accountData);
     const modalOptions: UiModal = {
-      title: accountData == null ? 'Create group service' : 'Update group service',
+      title:
+        accountData == null ? 'Create group service' : 'Update group service',
       bodyComponent: ServiceGroupFormComponent,
       bodyData: {
-        group: accountData
+        group: accountData,
       },
       showFooter: false,
       size: '40vw',
@@ -107,7 +100,7 @@ export class ManagerServiceComponent implements OnInit {
       if (response as boolean) {
         this.GetAllGroup();
       }
-    })
+    });
   }
 
   OpenService(service?: any) {
@@ -115,7 +108,7 @@ export class ManagerServiceComponent implements OnInit {
       title: service == null ? 'Create service' : 'Update service',
       bodyComponent: ManagerServiceFormComponent,
       bodyData: {
-        service: service
+        service: service,
       },
       showFooter: false,
       size: '50vw',
@@ -125,17 +118,14 @@ export class ManagerServiceComponent implements OnInit {
       if (response as boolean) {
         this.GetService();
       }
-    })
+    });
   }
 
-
-  openRelogin(accountData: any) {
-  }
+  openRelogin(accountData: any) {}
 
   //Làm mới dữ liệu bảng
   Load() {
-
-    let userId = JSON.parse(localStorage.getItem("user")).id;
+    let userId = JSON.parse(window.localStorage?.getItem('user')).id;
   }
 
   isConnectedAccount(token: string) {

@@ -1,26 +1,19 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { map } from 'rxjs';
-import { Constant } from '../constant/Constant';
-import { MasterService } from './master/master.service';
+import window from 'global';
 import { EnvService } from '../env.service';
+import { MasterService } from './master/master.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
   public apiURL = this.env.apiUrl;
   jwtHelper = new JwtHelperService();
   decodedToken: any;
   currentUser: any;
 
-  constructor(
-    private master: MasterService,
-    private env: EnvService,
-  ) { }
+  constructor(private master: MasterService, private env: EnvService) {}
 
   getTesst() {
     return this.master.get(`${this.apiURL}WeatherForecast`);
@@ -32,7 +25,7 @@ export class AuthService {
   }
 
   IsLoggedIn() {
-    const token = localStorage.getItem('token');
+    const token = window.localStorage?.getItem('token');
     return !this.jwtHelper.isTokenExpired(token);
   }
 }

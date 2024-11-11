@@ -1,0 +1,13 @@
+{
+  "routes": [
+    "/",
+    "/404",
+    "/500",
+    "/customer",
+    "/dashboard",
+    "/login",
+    "/manager-service",
+    "/manager-staff",
+    "/setting"
+  ]
+}
